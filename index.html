@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>悉尼+圣灵群岛 9天8晚 自然风光·大堡礁潜水之旅</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   :root {
     --ocean: #006994;
@@ -408,43 +409,44 @@
   }
 
   /* ── Route Map ── */
-  .route-map {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+  .map-container {
     margin: 20px 0;
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--border);
   }
-  .route-map .sydney-zone {
-    background: linear-gradient(135deg, #e8f4f8, #d0eaf5);
-    padding: 20px 16px;
-    text-align: center;
-  }
-  .route-map .whitsunday-zone {
-    background: linear-gradient(135deg, #e0f5f0, #c8efe5);
-    padding: 20px 16px;
-    text-align: center;
-  }
-  .route-map h3 {
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-  .route-line {
+  #routeMap { width: 100%; height: 520px; }
+  .map-legend {
     display: flex;
-    justify-content: center;
-    gap: 4px;
     flex-wrap: wrap;
-    margin: 8px 0;
-    font-size: .8em;
-  }
-  .route-line span {
+    gap: 16px;
+    padding: 14px 18px;
     background: white;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-weight: 600;
+    border-top: 1px solid var(--border);
+    font-size: .85em;
   }
+  .map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .map-legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+  }
+  .map-legend-line {
+    width: 20px; height: 3px;
+    border-radius: 2px;
+  }
+  .map-legend-dash {
+    width: 20px; height: 0;
+    border-top: 3px dashed;
+  }
+  .leaflet-popup-content { font-family: inherit; font-size: .9em; }
+  .leaflet-popup-content strong { font-size: 1.02em; }
 
   /* ── Print ── */
   @media print {
@@ -458,7 +460,6 @@
   @media (max-width: 768px) {
     .hero h1 { font-size: 1.5em; }
     .compare-grid { grid-template-columns: 1fr; }
-    .route-map { grid-template-columns: 1fr; }
     .philosophy-grid { grid-template-columns: 1fr; }
     .day-card-header { flex-direction: column; align-items: flex-start; }
   }
@@ -498,20 +499,14 @@
 <section class="section">
   <h2 class="section-title">🗺️ 路线总览</h2>
 
-  <div class="route-map">
-    <div class="sydney-zone">
-      <h3>🏙️ SYDNEY <small>（3晚）</small></h3>
-      <div class="route-line">
-        <span>Day1 到达</span> <span>Day2 🍷猎人谷</span> <span>Day3 🐋观鲸</span>
-      </div>
-      <div style="font-size:.82em;color:var(--text-light);margin-top:6px;">🏠 Waterloo公寓</div>
-    </div>
-    <div class="whitsunday-zone">
-      <h3>🏝️ 圣灵群岛 WHITSUNDAYS <small>（4晚）</small></h3>
-      <div class="route-line">
-        <span>Day4 ✈️抵达</span> <span>Day5 🏖️白天堂</span> <span>Day6 🤿大堡礁</span> <span>Day7 🛩️心形礁</span>
-      </div>
-      <div style="font-size:.82em;color:var(--text-light);margin-top:6px;">🏨 Airlie Beach 3BR公寓</div>
+  <div class="map-container">
+    <div id="routeMap"></div>
+    <div class="map-legend">
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:#2563eb;"></div> 悉尼段</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#2563eb;"></div> 自驾</div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:#009b8e;"></div> 圣灵群岛段</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#e8963e;"></div> 航班</div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:#c53030;"></div> 核心景点</div>
     </div>
   </div>
 
@@ -1124,6 +1119,70 @@
 </footer>
 
 </div><!-- /container -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var map = L.map('routeMap', { scrollWheelZoom: false }).setView([-27, 150], 5);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  // ── Sydney markers ──
+  var sydneyIcon = L.divIcon({ html: '<div style="background:#2563eb;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏙</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var natureIcon = L.divIcon({ html: '<div style="background:#c53030;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">⭐</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var reefIcon = L.divIcon({ html: '<div style="background:#009b8e;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏝</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var wineIcon = L.divIcon({ html: '<div style="background:#722f37;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🍷</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var flightIcon = L.divIcon({ html: '<div style="background:#e8963e;color:white;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">✈</div>', iconSize:[22,22], iconAnchor:[11,11], popupAnchor:[0,-12] });
+  var beachIcon = L.divIcon({ html: '<div style="background:#c53030;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏖</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var whaleIcon = L.divIcon({ html: '<div style="background:#4a90d9;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🐋</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+  var planeIcon = L.divIcon({ html: '<div style="background:#e8963e;color:white;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.3)">🛩</div>', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-14] });
+
+  // Sydney Opera House
+  var opera = [-33.8568, 151.2153];
+  L.marker(opera, {icon: sydneyIcon}).bindPopup('<strong>🏛️ 悉尼歌剧院</strong><br>Day 1 到达 · CBD速览<br>Day 3 观鲸出发港').addTo(map);
+  // Bondi Beach
+  var bondi = [-33.8915, 151.2767];
+  L.marker(bondi, {icon: beachIcon}).bindPopup('<strong>🏖️ Bondi Beach</strong><br>Day 3 下午：Bondi→Coogee海岸步道').addTo(map);
+  // Hunter Valley
+  var hunter = [-32.7864, 151.3115];
+  L.marker(hunter, {icon: wineIcon}).bindPopup('<strong>🍷 猎人谷 Hunter Valley</strong><br>Day 2 品酒一日游<br>150+酒庄 · 野生袋鼠').addTo(map);
+
+  // Route: Sydney → Hunter Valley (car)
+  L.polyline([opera, hunter], {color:'#2563eb', weight:3, opacity:.8, dashArray:'8 4'}).bindPopup('🚗 M1高速 2小时 · Day 2').addTo(map);
+  // Route: Hunter Valley → Sydney (return)
+  L.polyline([hunter, opera], {color:'#2563eb', weight:3, opacity:.8, dashArray:'8 4'}).addTo(map);
+
+  // Flight Sydney → PPP
+  var ppp = [-20.4949, 148.5522];
+  var flightLine = L.polyline([[-33.94, 151.17], ppp], {color:'#e8963e', weight:3, opacity:.9}).bindPopup('✈️ Jetstar SYD→PPP 2.5h · Day 4').addTo(map);
+
+  // Whitsundays markers
+  var airlie = [-20.2687, 148.7168];
+  L.marker(airlie, {icon: reefIcon}).bindPopup('<strong>🏝️ Airlie Beach</strong><br>Day 4-8 住宿地<br>泻湖 · 帆船 · 海滨').addTo(map);
+
+  var whitehaven = [-20.2820, 149.0350];
+  L.marker(whitehaven, {icon: beachIcon}).bindPopup('<strong>🏖️ 白天堂海滩</strong><br>Day 5 · Hill Inlet<br>全球十大最美沙滩').addTo(map);
+
+  var hardyReef = [-19.743, 149.23];
+  L.marker(hardyReef, {icon: natureIcon}).bindPopup('<strong>🤿 Hardy Reef 大堡礁外礁</strong><br>Day 6 · 潜水日！<br>珊瑚墙 · 海龟 · 礁鲨').addTo(map);
+
+  var heartReef = [-19.770, 149.245];
+  L.marker(heartReef, {icon: planeIcon}).bindPopup('<strong>💙 心形礁 Heart Reef</strong><br>Day 7 · 观光飞机<br>只能从空中看！').addTo(map);
+
+  // Flight PPP → Sydney (return)
+  L.polyline([ppp, [-33.94, 151.17]], {color:'#e8963e', weight:3, opacity:.7, dashArray:'6 4'}).bindPopup('✈️ Jetstar PPP→SYD 2h40m · Day 8').addTo(map);
+
+  // Control to fit bounds
+  map.fitBounds([
+    [-34.2, 148.5],   // SW: Sydney south
+    [-19.5, 152.0]    // NE: Heart Reef
+  ], {padding: [30, 30]});
+
+})();
+</script>
 
 </body>
 </html>
