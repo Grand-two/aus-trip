@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>悉尼+圣灵群岛 9天8晚 自然风光·大堡礁潜水之旅</title>
+<style>
+  :root {
+    --ocean: #006994;
+    --ocean-light: #e8f4f8;
+    --coral: #ff6b4a;
+    --coral-light: #fff5f2;
+    --sand: #f5e6c8;
+    --wine: #722f37;
+    --wine-light: #fdf2f4;
+    --forest: #2d6a4f;
+    --forest-light: #edf7f1;
+    --gold: #d4a017;
+    --text: #2c3e50;
+    --text-light: #5a6c7d;
+    --border: #e2e8f0;
+    --bg: #f8fafb;
+    --card: #ffffff;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #003d5c 0%, #006994 40%, #0099b8 100%);
+    color: white;
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -10%;
+    width: 120%; height: 80px;
+    background: var(--bg);
+    border-radius: 50% 50% 0 0;
+  }
+  .hero h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 1.05em;
+    opacity: .85;
+    font-weight: 500;
+  }
+  .hero .badge-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero .badge {
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(4px);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: .88em;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+  .section {
+    margin-top: 48px;
+  }
+  .section-title {
+    font-size: 1.55em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--ocean);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 1.08em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-body { padding: 20px; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+
+  /* ── Philosophy ── */
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .philosophy-item {
+    background: var(--ocean-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: .95em;
+    border-left: 3px solid var(--ocean);
+  }
+
+  /* ── Highlights Table ── */
+  .hl-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .hl-table th {
+    background: var(--ocean);
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    text-align: left;
+    font-size: .92em;
+  }
+  .hl-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: white;
+  }
+  .hl-table tr:last-child td { border-bottom: none; }
+  .hl-table .stars { color: var(--gold); white-space: nowrap; }
+
+  /* ── Day Cards ── */
+  .day-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .day-card-header {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .day-card-header .day-num {
+    font-weight: 800;
+    font-size: 1.2em;
+  }
+  .day-card-header .day-date {
+    font-size: .9em;
+    color: var(--text-light);
+  }
+  .day-card.sydney .day-card-header {
+    background: linear-gradient(135deg, #e8f4f8, #f0f8ff);
+    border-bottom: 2px solid var(--ocean);
+  }
+  .day-card.whitsundays .day-card-header {
+    background: linear-gradient(135deg, #e0f5f0, #edf9f5);
+    border-bottom: 2px solid #009b8e;
+  }
+  .day-card.transit .day-card-header {
+    background: linear-gradient(135deg, #fef3e8, #fdf8f2);
+    border-bottom: 2px solid #e8963e;
+  }
+  .day-card.final .day-card-header {
+    background: linear-gradient(135deg, #f0f0f0, #f8f8f8);
+    border-bottom: 2px solid #888;
+  }
+  .day-card-body { padding: 24px; }
+  .day-card-body img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 14px 0;
+    box-shadow: var(--shadow);
+  }
+
+  /* ── Timetable ── */
+  .timetable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: .93em;
+  }
+  .timetable th {
+    background: #f1f5f9;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  .timetable td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .timetable tr:hover { background: #fafbfc; }
+
+  /* ── Info table ── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .93em;
+    max-width: 600px;
+  }
+  .info-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-table td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--text-light);
+    width: 80px;
+  }
+
+  /* ── Code blocks → styled diagrams ── */
+  .diagram {
+    background: #1a2332;
+    color: #a8d8ea;
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+    font-size: .82em;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 14px 0;
+    white-space: pre;
+  }
+
+  /* ── Tips ── */
+  .tip {
+    background: #fffbeb;
+    border-left: 4px solid var(--gold);
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 14px 0;
+    font-size: .92em;
+    color: #7a6810;
+  }
+  .tip strong { color: #5c4d00; }
+
+  .highlight-box {
+    background: var(--coral-light);
+    border-left: 4px solid var(--coral);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 14px 0;
+    font-size: .93em;
+  }
+
+  /* ── Alternative / Compare ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 14px 0;
+  }
+  .compare-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .compare-card h4 {
+    margin-bottom: 8px;
+    font-size: .95em;
+  }
+
+  /* ── Checklist ── */
+  .checklist-section h3 {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin: 18px 0 8px;
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: .93em;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: .78em;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+  }
+  .tag-red { background: #e53e3e; }
+  .tag-yellow { background: #d69e2e; }
+  .tag-green { background: #38a169; }
+
+  /* ── Rules Grid ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .rule-card {
+    background: var(--forest-light);
+    border-radius: 8px;
+    padding: 16px;
+    border-top: 3px solid var(--forest);
+  }
+  .rule-card h4 { font-size: 1em; margin-bottom: 6px; }
+  .rule-card .do { color: var(--forest); }
+  .rule-card .dont { color: #c53030; }
+
+  /* ── Diving Compare ── */
+  .diving-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 14px 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .diving-table th {
+    background: var(--ocean);
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+  }
+  .diving-table td {
+    padding: 10px 12px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+  }
+  .diving-table .highlight { background: #f0fdf4; font-weight: 700; }
+
+  /* ── Budget Table ── */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .93em;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .budget-table th {
+    background: #2d3748;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .budget-table td {
+    padding: 9px 14px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+  }
+  .budget-table .total-row td {
+    background: #fef3c7;
+    font-weight: 700;
+    font-size: 1.05em;
+    border-top: 2px solid var(--gold);
+  }
+  .budget-table .amount {
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--ocean);
+  }
+
+  /* ── Route Map ── */
+  .route-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 20px 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .route-map .sydney-zone {
+    background: linear-gradient(135deg, #e8f4f8, #d0eaf5);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .route-map .whitsunday-zone {
+    background: linear-gradient(135deg, #e0f5f0, #c8efe5);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .route-map h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  .route-line {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+    font-size: .8em;
+  }
+  .route-line span {
+    background: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .hero { padding: 20px 16px; background: var(--ocean) !important; -webkit-print-color-adjust: exact; }
+    .day-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .container { max-width: 100%; padding: 0 10px; }
+    .diagram { background: #f5f5f5; color: #333; }
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.5em; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .route-map { grid-template-columns: 1fr; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .day-card-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <h1>🍷🌊 悉尼+圣灵群岛 9天8晚</h1>
+  <p class="subtitle">自然风光 · 大堡礁潜水之旅</p>
+  <div class="badge-row">
+    <span class="badge">📅 2026年9月26日 — 10月4日</span>
+    <span class="badge">👥 6人 · 3男3女</span>
+    <span class="badge">🎒 全程自由行 · 不跟团</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════════════ 设计理念 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">🎯 行程设计理念</h2>
+  <p style="margin-bottom:16px;color:var(--text-light);">以自然风光为主，城市只做点缀。悉尼半天速览城市地标，其余时间全部留给：</p>
+  <div class="philosophy-grid">
+    <div class="philosophy-item">🍷 <strong>猎人谷</strong> — 澳洲最古老葡萄酒产区，葡萄园+丘陵+野生袋鼠</div>
+    <div class="philosophy-item">🐋 <strong>观鲸</strong> — 9月底座头鲸南迁尾峰，80%+概率</div>
+    <div class="philosophy-item">🏖️ <strong>悉尼海岸线</strong> — Bondi到Coogee的悬崖步道</div>
+    <div class="philosophy-item">🏝️ <strong>白天堂海滩</strong> — 全球前十最美沙滩，98%纯白硅砂</div>
+    <div class="philosophy-item">🤿 <strong>大堡礁外礁</strong> — 潜入世界最大珊瑚礁系统</div>
+    <div class="philosophy-item">🛩️ <strong>心形礁+群岛全景</strong> — 60分钟空中俯瞰大堡礁</div>
+  </div>
+  <p style="margin-top:14px;font-size:.9em;color:var(--text-light);">沿途偶遇的考拉、袋鼠、海龟和鲸鱼，是自然风光之外的加分项，不是主线。</p>
+</section>
+
+<!-- ═══════════════ 路线总览 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">🗺️ 路线总览</h2>
+
+  <div class="route-map">
+    <div class="sydney-zone">
+      <h3>🏙️ SYDNEY <small>（3晚）</small></h3>
+      <div class="route-line">
+        <span>Day1 到达</span> <span>Day2 🍷猎人谷</span> <span>Day3 🐋观鲸</span>
+      </div>
+      <div style="font-size:.82em;color:var(--text-light);margin-top:6px;">🏠 Waterloo公寓</div>
+    </div>
+    <div class="whitsunday-zone">
+      <h3>🏝️ 圣灵群岛 WHITSUNDAYS <small>（4晚）</small></h3>
+      <div class="route-line">
+        <span>Day4 ✈️抵达</span> <span>Day5 🏖️白天堂</span> <span>Day6 🤿大堡礁</span> <span>Day7 🛩️心形礁</span>
+      </div>
+      <div style="font-size:.82em;color:var(--text-light);margin-top:6px;">🏨 Airlie Beach 3BR公寓</div>
+    </div>
+  </div>
+
+  <!-- Highlights Table -->
+  <div class="card" style="margin-top:24px;">
+    <div class="card-header" style="background:var(--ocean-light);">🌿 自然风光亮点</div>
+    <div class="card-body" style="padding:0;">
+      <table class="hl-table">
+        <thead>
+          <tr><th>地点</th><th>风光类型</th><th style="text-align:center">级别</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🍷 猎人谷 Hunter Valley</td><td>葡萄园丘陵 + 酒庄庄园 + 野生袋鼠群 + 奶酪工坊</td><td class="stars">⭐⭐⭐</td></tr>
+          <tr><td>🐋 悉尼外海观鲸</td><td>9月底座头鲸南迁尾峰，喷水+尾鳍+跃身击浪</td><td class="stars">⭐⭐⭐⭐</td></tr>
+          <tr><td>🏖️ Bondi→Coogee海岸步道</td><td>6km悬崖步道，砂岩峭壁+碧蓝海湾连绵不绝</td><td class="stars">⭐⭐⭐</td></tr>
+          <tr><td>🏝️ 白天堂海滩+Hill Inlet</td><td>全球前十沙滩，98%纯白硅砂+蓝绿漩涡潮汐</td><td class="stars">⭐⭐⭐⭐⭐</td></tr>
+          <tr><td>🤿 大堡礁Hardy Reef</td><td>世界最大珊瑚礁系统，珊瑚墙+澄澈热带海水</td><td class="stars">⭐⭐⭐⭐⭐</td></tr>
+          <tr><td>🛩️ 心形礁+群岛空中俯瞰</td><td>60分钟鸟瞰74座岛屿+珊瑚礁群+心形礁</td><td class="stars">⭐⭐⭐⭐⭐</td></tr>
+          <tr><td>🌿 Conway国家公园</td><td>热带雨林步道，俯瞰Whitsunday群岛全景</td><td class="stars">⭐⭐</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tip">
+    🐋 9月底是座头鲸南迁尾峰，出海观鲸有<strong>80%+</strong>概率看到。猎人谷葡萄园里野生袋鼠傍晚出来吃草。大堡礁海龟/礁鲨/苏眉鱼几乎必见。
+  </div>
+</section>
+
+<!-- ═══════════════ 逐日行程 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">📅 逐日详细行程</h2>
+
+  <!-- ===== Day 1 ===== -->
+  <div class="day-card sydney" id="day1">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 1</span>
+        <span style="color:var(--text-light);margin-left:10px;">9月26日（周六）</span>
+      </div>
+      <span style="background:var(--ocean);color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">到达 + 悉尼速览 🏛️</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">城市部分只留半天，够看完歌剧院+海港大桥+岩石区就行。</div>
+
+      <h4 style="margin:16px 0 10px;">🛬 入境 & 入住</h4>
+      <div class="diagram">  ✈️ 杭州萧山 ──MF801──▶ 悉尼 09:20
+  ════════════════════════════════
+  🚆 机场→Green Square站 (T8线, 10分钟, A$20)
+  🏠 入住 8 Lachlan St, Waterloo
+  🚿 洗澡换衣服，12:00出发</div>
+
+      <h4 style="margin:16px 0 10px;">🚶 下午：CBD步行路线（4小时精华版）</h4>
+      <div class="diagram">  Circular Quay ────▶ 歌剧院 ────▶ 皇家植物园
+       │                 📸5min        │ 🚶15min
+       │                              ▼
+       │                      麦考利夫人椅
+       │                      (歌剧院+大桥同框)
+       │                              │
+       ▼                              ▼ (原路返回)
+  🍽️ Opera Bar            The Rocks 岩石区
+   (一杯酒看海港)    ◀──── 🚶10min
+       │                     │
+       ▼                     ▼
+  海港大桥底下拍照     🥧 Harry's Cafe de Wheels
+                      (1945年老店肉派)</div>
+
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>12:00</td><td>🚆 Green Square→Circular Quay</td><td>T8线，10分钟</td></tr>
+          <tr><td>12:30</td><td>🥢 午餐：Opera Bar 或 Gateway美食广场</td><td>边看歌剧院边吃</td></tr>
+          <tr><td>13:15</td><td>🏛️ 歌剧院 外观拍照</td><td>不进去也行，外面拍照就够了</td></tr>
+          <tr><td>13:30</td><td>🌿 皇家植物园 → 麦考利夫人椅</td><td>15分钟步行，拍经典同框照</td></tr>
+          <tr><td>14:15</td><td>🛍️ 岩石区 The Rocks</td><td>历史街区，逛逛小巷</td></tr>
+          <tr><td>15:30</td><td>🌉 海港大桥</td><td>Pylon Lookout A$25（可选）或桥底拍照</td></tr>
+          <tr><td>16:30</td><td>🍻 休息</td><td>The Glenmore Hotel 屋顶酒吧（180°海港景）</td></tr>
+          <tr><td>17:00</td><td>🚌 回Waterloo休息</td><td>倒时差，为第二天猎人谷酒庄游储备体力</td></tr>
+          <tr><td>19:00</td><td>🍽️ 晚餐</td><td>Waterloo附近或唐人街</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip">💡 如果下午不想走太多，可以缩短为：歌剧院拍照 + 植物园 + Opera Bar，2小时搞定。</div>
+
+      <img src="images/mrs-macquarie-chair-view.jpg" alt="Mrs Macquarie's Chair view" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ===== Day 2 ===== -->
+  <div class="day-card sydney" id="day2">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 2</span>
+        <span style="color:var(--text-light);margin-left:10px;">9月27日（周日）</span>
+      </div>
+      <span style="background:var(--wine);color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">🍷 猎人谷品酒一日游</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">⭐ 澳洲最古老葡萄酒产区，150+酒庄，葡萄园+丘陵+野生袋鼠，松弛感拉满</div>
+      <img src="images/hunter-valley-vineyard.jpg" alt="Hunter Valley vineyard" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">🚗 自驾路线（6人推荐，灵活串酒庄）</h4>
+      <div class="diagram">  Waterloo ──M1高速──▶ Hunter Valley ──▶ 酒庄1 ──▶ 酒庄2 ──▶ 奶酪工坊 ──▶ 酒庄3 ──▶ 返程
+           2h               游客中心       品酒        午餐       伴手礼       葡萄园日落    2h</div>
+
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>详情</th></tr></thead>
+        <tbody>
+          <tr><td>08:00</td><td>🚗 出发</td><td>M1高速向北160km/2h，7座MPV（A$120-160/天）或2辆小车；路上经过 Hawkesbury River 河谷风光</td></tr>
+          <tr><td>10:00</td><td>🍷 第一站：大牌酒庄</td><td><strong>Tyrrell's</strong> 或 <strong>McGuigan</strong>，免费品酒；赛美蓉（Semillon）是猎人谷招牌白葡萄</td></tr>
+          <tr><td>11:30</td><td>🍷 第二站：精品小庄</td><td><strong>Krinklewood</strong>（法式田园风，有机认证）或 <strong>Audrey Wilkinson</strong>（山顶酒庄，360°葡萄园全景）</td></tr>
+          <tr><td>12:30</td><td>🧀 午餐+奶酪</td><td><strong>Binnorie Dairy</strong> 奶酪工坊 或 <strong>Muse Restaurant</strong>（猎人谷唯一两帽餐厅，需预约）</td></tr>
+          <tr><td>14:00</td><td>🍷 第三站：下午酒</td><td><strong>Brokenwood</strong>（猎人谷标杆酒庄）或 <strong>Scarborough</strong>（霞多丽专业户，花园品酒）</td></tr>
+          <tr><td>15:30</td><td>🦘 猎人谷花园+袋鼠</td><td><strong>Hunter Valley Gardens</strong>（春季玫瑰+薰衣草，A$35）；葡萄园里野生袋鼠傍晚成群出没</td></tr>
+          <tr><td>16:30</td><td>🍫 伴手礼</td><td><strong>Hunter Valley Chocolate Company</strong> 或 <strong>Pokolbin Jam Factory</strong></td></tr>
+          <tr><td>17:00</td><td>🚗 返程</td><td>M1回悉尼，2h</td></tr>
+          <tr><td>19:00</td><td>🍽️ 晚餐</td><td>Waterloo附近</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip">🍷 <strong>品酒小贴士</strong>：大部分酒庄免费品酒（买酒就免），收费酒庄 A$5-10 可抵酒款。6人选一名司机不喝酒（或轮流）。猎人谷产区的白葡萄酒（Semillon / Chardonnay）和西拉（Shiraz）世界顶级，带两瓶回去绝对不亏。</div>
+
+      <h4 style="margin:16px 0 10px;">🚌 备选：跟团一日游（不留司机，全员畅饮）</h4>
+      <table class="timetable">
+        <thead><tr><th>公司</th><th>价格</th><th>特色</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hunter Valley Wine Tasting Tours</strong></td><td>A$130-160/人</td><td>悉尼CBD接送，3-4酒庄+午餐，小团12人</td></tr>
+          <tr><td><strong>Zepher Tours</strong></td><td>A$150-190/人</td><td>含2帽餐厅午餐，4家精品酒庄，含奶酪/巧克力</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">💡 6人选跟团：不用留司机，所有人畅饮。人均A$130-190，比租车+油钱贵不了太多。自驾：路线自由，想在哪待多久就待多久。</div>
+    </div>
+  </div>
+
+  <!-- ===== Day 3 ===== -->
+  <div class="day-card sydney" id="day3">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 3</span>
+        <span style="color:var(--text-light);margin-left:10px;">9月28日（周一）</span>
+      </div>
+      <span style="background:#4a90d9;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">🐋 观鲸 + 🏖️ Bondi海岸徒步</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">⭐ 9月底座头鲸南迁尾峰！早上出海追鲸，下午漫步澳洲最美城市海岸</div>
+      <img src="images/bondi-beach-aerial.jpg" alt="Bondi Beach" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">🐋 上午：观鲸巡航</h4>
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>详情</th></tr></thead>
+        <tbody>
+          <tr><td>08:00</td><td>🚆 Waterloo→Circular Quay</td><td>T8线，10分钟</td></tr>
+          <tr><td>08:30</td><td>☕ 环形码头早餐</td><td>City Extra 24小时，海边早餐</td></tr>
+          <tr><td>09:00</td><td>🐋 观鲸船出发！</td><td><strong>Go Whale Watching Sydney</strong> 或 <strong>Captain Cook Cruises</strong>；2-3小时，A$69-99/人；80%+概率看到座头鲸</td></tr>
+          <tr><td>12:00</td><td>返回 Circular Quay</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <img src="images/whale-watching.jpg" alt="Whale watching" loading="lazy">
+      <div class="tip">🐋 <strong>观鲸最佳季</strong>：5-11月座头鲸迁徙途经悉尼海岸线，9月底南迁尾峰。坐上层甲板视野好。晕船的提前吃晕船药。</div>
+
+      <h4 style="margin:16px 0 10px;">🏖️ 下午：Bondi→Coogee海岸步道</h4>
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>详情</th></tr></thead>
+        <tbody>
+          <tr><td>12:30</td><td>🍽️ 午餐</td><td>Circular Quay 附近解决</td></tr>
+          <tr><td>13:30</td><td>🚌 去 Bondi</td><td>公交 333 直达 Bondi Beach，25分钟，A$3.5</td></tr>
+          <tr><td>14:00</td><td>🏊 Icebergs Pool 冰山泳池（可选）</td><td>A$10，海水泳池嵌在悬崖边</td></tr>
+          <tr><td>14:30</td><td>☕ Bondi 下午茶</td><td>Speedos Cafe 或 Porch & Parlour</td></tr>
+          <tr><td>15:00</td><td>🚶 Bondi→Coogee海岸步道</td><td>6公里，约2小时：Tamarama(15min)→Bronte(30min)→Clovelly(40min)→Coogee(35min)</td></tr>
+          <tr><td>17:00</td><td>🍻 Coogee Pavilion</td><td>三层海景餐厅喝一杯，A$30-40</td></tr>
+          <tr><td>18:30</td><td>🚌 返回 Waterloo</td><td>公交 373</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">💡 如果观鲸后感觉累了，下午可压缩为只看 Bondi + Icebergs Pool，不走完整 6km 步道。</div>
+
+      <img src="images/icebergs-pool-bondi.jpg" alt="Icebergs Pool" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ===== Day 4 ===== -->
+  <div class="day-card transit" id="day4">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 4</span>
+        <span style="color:var(--text-light);margin-left:10px;">9月29日（周二）</span>
+      </div>
+      <span style="background:#e8963e;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">✈️ 悉尼飞圣灵群岛 → 艾尔利滩</span>
+    </div>
+    <div class="day-card-body">
+      <img src="images/airlie-beach-lagoon.jpg" alt="Airlie Beach Lagoon" loading="lazy">
+
+      <div class="diagram">  🏠 Waterloo ──▶ 悉尼机场T2 ──✈️──▶ Proserpine (PPP) ──🚌──▶ Airlie Beach
+        10min          Jetstar 2.5h              Shuttle 30min</div>
+
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>详情</th></tr></thead>
+        <tbody>
+          <tr><td>07:00</td><td>🏠 退房+出发</td><td>🚆 Green Square→Domestic Airport (T8, 10分钟)</td></tr>
+          <tr><td>08:30</td><td>🛂 值机</td><td>Jetstar SYD→PPP（提前1小时到即可，国内航班）；⚠️ Jetstar无免费行李托运，提前网上买A$25/20kg</td></tr>
+          <tr><td>09:30</td><td>✈️ 悉尼→Proserpine</td><td>约2.5小时，俯瞰大堡礁！坐左边窗户</td></tr>
+          <tr><td>12:00</td><td>🛬 抵达PPP</td><td>Whitsunday Coast Airport</td></tr>
+          <tr><td>12:15</td><td>🚌 接驳车去Airlie</td><td>6人建议私人包车接送（A$30-40/人），30分钟直达</td></tr>
+          <tr><td>12:45</td><td>🏨 入住</td><td>3BR公寓：The Boathouse 或 The Sebel Whitsundays</td></tr>
+          <tr><td>13:30</td><td>🍽️ 午餐</td><td>Airlie Beach Main Street，推荐：The Deck（海景）</td></tr>
+          <tr><td>15:00</td><td>🏊 Airlie Beach Lagoon</td><td>免费公共海景泳池！出海前的完美下午</td></tr>
+          <tr><td>16:30</td><td>🚶 Bicentennial Walk</td><td>海滨步道4km往返，经过Coral Sea Marina，看游艇+海岛风光</td></tr>
+          <tr><td>17:00</td><td>⛵ 落日帆船（可选）</td><td>2小时黄昏帆船，A$69-89，含香槟+小吃</td></tr>
+          <tr><td>19:00</td><td>🍽️ 晚餐</td><td>Fish D'vine（海鲜+著名朗姆酒吧）或 La Tabella（意餐）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== Day 5 ===== -->
+  <div class="day-card whitsundays" id="day5">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 5</span>
+        <span style="color:var(--text-light);margin-left:10px;">9月30日（周三）</span>
+      </div>
+      <span style="background:#009b8e;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">🏖️ 白天堂海滩 + Hill Inlet 🔥</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">⭐ 全球十大最美沙滩 + 希尔湾漩涡沙洲</div>
+      <img src="images/whitehaven-beach.jpg" alt="Whitehaven Beach" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">🚤 推荐：Ocean Rafting 快艇一日游</h4>
+      <table class="info-table">
+        <tr><td>公司</td><td><strong>Ocean Rafting</strong></td></tr>
+        <tr><td>价格</td><td>A$199-249/人</td></tr>
+        <tr><td>船型</td><td>半刚性充气快艇（快+刺激），最多32人</td></tr>
+        <tr><td>时长</td><td>7-8小时</td></tr>
+        <tr><td>包含</td><td>白天堂海滩+Hill Inlet观景台+国家公园导览+浮潜装备+午餐</td></tr>
+        <tr><td>预订</td><td>oceanrafting.com.au 提前2周+</td></tr>
+      </table>
+
+      <div class="diagram">  【路线】Airlie Beach ──🛥️1h──▶ Hill Inlet Lookout
+                              │
+                              ▼  Whitehaven Beach (2h自由)
+                              │
+                              ▼  Hook Island / Border Island (浮潜1h)
+                              │
+                              ▼  🛥️返程 → Airlie Beach (~17:00)</div>
+
+      <h4 style="margin:16px 0 10px;">🚤 备选：Camira Sailing 帆船一日游</h4>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>Ocean Rafting</h4>
+          <p style="font-size:.88em;margin:0;">A$199-249 &nbsp;|&nbsp; 快艇刺激 &nbsp;|&nbsp; 32人 &nbsp;|&nbsp; 约8小时 &nbsp;|&nbsp; 海滩约2h</p>
+        </div>
+        <div class="compare-card">
+          <h4>Camira Sailing</h4>
+          <p style="font-size:.88em;margin:0;">A$235-285 &nbsp;|&nbsp; 帆船悠闲 &nbsp;|&nbsp; 60-72人 &nbsp;|&nbsp; 约10小时 &nbsp;|&nbsp; 🍷啤酒红酒畅饮+BBQ</p>
+        </div>
+      </div>
+
+      <h4 style="margin:16px 0 10px;">⏰ 当日时间线</h4>
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th></tr></thead>
+        <tbody>
+          <tr><td>08:00</td><td>码头集合</td></tr>
+          <tr><td>09:00</td><td>出发！快艇冲浪穿越Whitsunday Passage</td></tr>
+          <tr><td>10:00</td><td>到达Whitsunday Island → 徒步上Hill Inlet Lookout — 📸此行最出片的点！</td></tr>
+          <tr><td>11:30</td><td>白天堂海滩2小时自由 🏊游泳 · 🏖️躺沙滩 · 📸拍照</td></tr>
+          <tr><td>13:30</td><td>船上午餐</td></tr>
+          <tr><td>14:00</td><td>前往浮潜点 🤿 珊瑚+五彩热带鱼+可能看到海龟！</td></tr>
+          <tr><td>15:30</td><td>返程，一路看鲸鱼！（9月底座头鲸南迁尾峰）</td></tr>
+          <tr><td>17:00</td><td>回到Airlie Beach</td></tr>
+          <tr><td>19:00</td><td>🍻 晚餐：Northerlies Beach Bar（海景落日酒吧）</td></tr>
+        </tbody>
+      </table>
+      <img src="images/hill-inlet.jpg" alt="Hill Inlet" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ===== Day 6 ===== -->
+  <div class="day-card whitsundays" id="day6">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 6</span>
+        <span style="color:var(--text-light);margin-left:10px;">10月1日（周四）</span>
+      </div>
+      <span style="background:#c53030;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">🤿 大堡礁外礁 · Hardy Reef 潜水日 🔥🔥🔥</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">⭐ 这一天是整个行程的重头戏！真正的Great Barrier Reef外礁！</div>
+      <img src="images/gbr-underwater.jpg" alt="Great Barrier Reef underwater" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">🛥️ Cruise Whitsundays 大堡礁全日游</h4>
+      <table class="info-table">
+        <tr><td>公司</td><td><strong>Cruise Whitsundays</strong></td></tr>
+        <tr><td>价格</td><td>A$319/人（日游，不含潜水）</td></tr>
+        <tr><td>船型</td><td>大型双体船，稳定舒适</td></tr>
+        <tr><td>时长</td><td>约10小时（4小时在浮台）</td></tr>
+        <tr><td>包含</td><td>往返船票+浮潜装备+防刺服+半潜船+水下观景台+午餐+下午茶</td></tr>
+        <tr><td>预订</td><td>cruisewhitsundays.com 提前2-3周+</td></tr>
+      </table>
+
+      <h4 style="margin:16px 0 10px;">🤿 潜水选项（全队无证，推荐体验潜水）</h4>
+      <div class="compare-grid">
+        <div class="compare-card" style="border-left:3px solid var(--coral);">
+          <h4>⭐ 体验潜水 Discover Scuba</h4>
+          <p style="font-size:.9em;margin:0;">~A$150-180/人 | 教练一对一 | 5-12米深 | 无需证照<br>珊瑚墙+大鱼群+海龟+礁鲨</p>
+        </div>
+        <div class="compare-card">
+          <h4>浮潜 Snorkeling</h4>
+          <p style="font-size:.9em;margin:0;">免费（已含）| 无限次 | 水面看珊瑚顶+浅水鱼+海龟<br>不会游泳也行，有浮力衣</p>
+        </div>
+      </div>
+
+      <div class="tip">🤿 6人都没有潜水证，推荐都报 <strong>Discover Scuba Diving</strong>。教练 1 对 1 带下水，先在浮台旁浅水区适应呼吸，不适应也可随时改浮潜。Hardy Reef 珊瑚覆盖率极高，海龟/小丑鱼/苏眉鱼/礁鲨几乎必见。9-10月水温约 22-24°C。</div>
+
+      <h4 style="margin:16px 0 10px;">⏰ 当日时间线</h4>
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th></tr></thead>
+        <tbody>
+          <tr><td>07:00</td><td>码头集合</td></tr>
+          <tr><td>08:00</td><td>🛥️ 出发！2小时航程，途中可能看到座头鲸🐋</td></tr>
+          <tr><td>10:00</td><td>到达Hardy Reef浮台 → 安全简报 → 分派教练</td></tr>
+          <tr><td>10:30</td><td>🤿 体验潜水（教练1对1，先浅水适应）；不深潜的人去浮潜区</td></tr>
+          <tr><td>12:00</td><td>🍽️ 午餐（自助）</td></tr>
+          <tr><td>13:00</td><td>🤿 继续深潜/浮潜，或坐半潜船/水下观景台</td></tr>
+          <tr><td>14:00</td><td>🐠 最后浮潜，交换体验心得</td></tr>
+          <tr><td>15:00</td><td>🛥️ 返程，甲板上晒太阳看海</td></tr>
+          <tr><td>17:00</td><td>回到Airlie Beach</td></tr>
+          <tr><td>19:00</td><td>🍽️ 晚餐：La Marina（意大利海鲜面）</td></tr>
+        </tbody>
+      </table>
+
+      <div class="diagram">  【Hardy Reef潜点示意图】
+          ┌─────────────────────┐
+          │   Reefworld 浮台     │
+          │  ┌──🍽️──🚻──🤿──┐  │
+          │  │                 │  │
+          │  │   浮潜区域       │  │
+          │  │   🐢🐠🦈       │  │
+          │  │                 │  │
+          │  └─────────────────┘  │
+          │         │              │
+          │    珊瑚墙 (深潜区)     │
+          │    ↓ 5-12米深         │
+          │    巨型珊瑚+大鱼群    │
+          └─────────────────────┘</div>
+    </div>
+  </div>
+
+  <!-- ===== Day 7 ===== -->
+  <div class="day-card whitsundays" id="day7">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 7</span>
+        <span style="color:var(--text-light);margin-left:10px;">10月2日（周五）</span>
+      </div>
+      <span style="background:#6b46c1;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">🛩️ 心形礁观光飞机 + 最后海边时光</span>
+    </div>
+    <div class="day-card-body">
+      <div class="highlight-box">⭐ 从空中俯瞰心形礁+白天堂海滩，另一维度感受大堡礁！</div>
+      <img src="images/gbr-aerial.jpg" alt="Great Barrier Reef aerial" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">🛩️ 60分钟观光飞机</h4>
+      <table class="info-table">
+        <tr><td>公司</td><td><strong>Air Whitsunday</strong> / <strong>GSL Aviation</strong></td></tr>
+        <tr><td>价格</td><td>A$315-349/人</td></tr>
+        <tr><td>机型</td><td>固定翼飞机（13人，人人靠窗）</td></tr>
+        <tr><td>时长</td><td>60分钟</td></tr>
+        <tr><td>路线</td><td>Airlie Beach → 白天堂海滩(鸟瞰) → Hill Inlet(漩涡沙洲) → 心形礁💙 → Hardy Reef → Hook Island → 返回</td></tr>
+        <tr><td>预订</td><td>提前1-2周，选最早7:00或8:30班次（上午光线最好）</td></tr>
+      </table>
+      <div class="tip">💡 心形礁只能从空中看！坐船到不了。60分钟飞机是圣灵群岛必做之事。</div>
+      <img src="images/heart-reef.jpg" alt="Heart Reef" loading="lazy">
+
+      <h4 style="margin:16px 0 10px;">⏰ 当日时间线</h4>
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th></tr></thead>
+        <tbody>
+          <tr><td>07:00</td><td>🛩️ 酒店接送去小机场（Whitsunday Airport）</td></tr>
+          <tr><td>07:30</td><td>🛩️ 起飞！60分钟大堡礁空中之旅 — 📸 每个窗口疯狂拍</td></tr>
+          <tr><td>08:30</td><td>降落，送回酒店</td></tr>
+          <tr><td>09:00</td><td>☕ Airlie Beach早餐：The Fat Frog（海边Brunch）</td></tr>
+          <tr><td>10:30</td><td>下午自由选项（三选一）↓</td></tr>
+        </tbody>
+      </table>
+
+      <table class="timetable" style="margin-top:8px;">
+        <thead><tr><th>选项</th><th>详情</th><th style="text-align:center">费用</th></tr></thead>
+        <tbody>
+          <tr><td>🌿 Conway国家公园徒步</td><td>Honeyeater Lookout (3.6km往返)，俯瞰Whitsunday群岛全景</td><td style="text-align:center;color:var(--forest);font-weight:600;">免费</td></tr>
+          <tr><td>🏖️ Cedar Creek Falls</td><td>天然瀑布水潭，可以游泳，距Airlie 20分钟车程</td><td style="text-align:center;color:var(--forest);font-weight:600;">免费</td></tr>
+          <tr><td>🛍️ Airlie Beach闲逛+泻湖</td><td>海边小店、Lagoon游泳</td><td style="text-align:center;color:var(--forest);font-weight:600;">免费</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;"><strong>19:00</strong> 🍽️ 晚餐：<strong>Anchor Bar</strong>（港口落日+鸡尾酒+生蚝A$2/只happy hour）</p>
+    </div>
+  </div>
+
+  <!-- ===== Day 8 ===== -->
+  <div class="day-card transit" id="day8">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 8</span>
+        <span style="color:var(--text-light);margin-left:10px;">10月3日（周六）</span>
+      </div>
+      <span style="background:#e8963e;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">上午自由 + ✈️ 飞回悉尼</span>
+    </div>
+    <div class="day-card-body">
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th><th>详情</th></tr></thead>
+        <tbody>
+          <tr><td>08:00</td><td>🏖️ 最后的Lagoon时光</td><td>沙滩散步+游泳+海边早餐</td></tr>
+          <tr><td>10:00</td><td>🏨 退房</td><td></td></tr>
+          <tr><td>10:30</td><td>🚌 接驳车去PPP机场</td><td>私人包车同去，提前约好回程时间</td></tr>
+          <tr><td>13:50</td><td>✈️ PPP→悉尼 JQ841</td><td>约2h40m，到达悉尼<strong>16:30</strong></td></tr>
+          <tr><td>16:40</td><td>🚆 机场→Waterloo</td><td>T8线，10分钟</td></tr>
+          <tr><td>17:15</td><td>🏠 入住</td><td></td></tr>
+          <tr><td>19:00</td><td>🍽️ 告别晚餐</td><td>唐人街大餐 或 Bodhi（植物园旁户外饮茶）</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">💡 上午可在Airlie多玩一会：Cedar Creek Falls（天然瀑布水潭）或 Conway NP 快速徒步，赶在10:30前回来。</div>
+    </div>
+  </div>
+
+  <!-- ===== Day 9 ===== -->
+  <div class="day-card final" id="day9">
+    <div class="day-card-header">
+      <div>
+        <span class="day-num">Day 9</span>
+        <span style="color:var(--text-light);margin-left:10px;">10月4日（周日）</span>
+      </div>
+      <span style="background:#666;color:white;padding:4px 12px;border-radius:14px;font-size:.85em;">返程 ✈️</span>
+    </div>
+    <div class="day-card-body">
+      <table class="timetable">
+        <thead><tr><th>时间</th><th>活动</th></tr></thead>
+        <tbody>
+          <tr><td>08:30</td><td>🏠 退房</td></tr>
+          <tr><td>09:00</td><td>🚆 Waterloo→悉尼T1国际 (T8线, 10分钟)</td></tr>
+          <tr><td>10:00</td><td>🛂 值机+安检+退税(如有)</td></tr>
+          <tr><td>10:30</td><td>🛍️ 免税店：TimTam/坚果/葡萄酒/保健品</td></tr>
+          <tr><td>12:25</td><td>✈️ 悉尼→杭州 MF802/MF8595 🏠</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 住宿汇总 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">🏨 住宿汇总（6人：3男3女）</h2>
+
+  <div class="compare-grid">
+    <div>
+      <h4 style="margin-bottom:10px;">🏙️ 悉尼（9/26-29 三晚 + 10/3 一晚）</h4>
+      <table class="timetable">
+        <thead><tr><th>方案</th><th>详情</th><th>价格/晚</th></tr></thead>
+        <tbody>
+          <tr><td>🏠 现有Waterloo公寓</td><td>已定，位置好</td><td style="color:var(--forest);">已定</td></tr>
+          <tr><td>⭐ Meriton Suites 2BR</td><td>步行3分钟到现有公寓</td><td>A$350-450</td></tr>
+          <tr><td>Meriton Suites 3BR</td><td>175m²，3张大床(可拆双床)</td><td>A$500-700</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">💡 推荐：保留现有公寓（2-4人住） + 旁边 Meriton 订一间 2BR（2-4人住），步行3分钟会合。</div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:10px;">🏝️ Airlie Beach（9/29-10/3 四晚）</h4>
+      <table class="timetable">
+        <thead><tr><th>选项</th><th>房型</th><th>价格/晚</th></tr></thead>
+        <tbody>
+          <tr><td>⭐ The Boathouse</td><td>3BR/2BA，6-7人</td><td>A$300-400</td></tr>
+          <tr><td>⭐ The Sebel Whitsundays</td><td>3BR/3BA 海景</td><td>A$400-550</td></tr>
+          <tr><td>At Marina Shores</td><td>3BR/2BA，200m²</td><td>A$350-450</td></tr>
+          <tr><td>Toscana Village Resort</td><td>3BR，6人</td><td>A$280-380</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">💡 首推 The Boathouse（性价比最高）或 The Sebel（翻新好）。6人合住3BR比订3间酒店房更划算。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 航班汇总 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">✈️ 航班汇总</h2>
+  <table class="hl-table">
+    <thead><tr><th>航段</th><th>推荐航班</th><th>时间</th><th style="text-align:center">预估价格</th></tr></thead>
+    <tbody>
+      <tr><td>杭州→悉尼</td><td>MF801 (已购)</td><td>9/25 18:45→9/26 09:20</td><td style="text-align:center;color:var(--forest);">已购</td></tr>
+      <tr><td>悉尼→PPP</td><td>Jetstar (每天1-2班)</td><td>9/29 约09:00-11:00出发</td><td style="text-align:center">A$130-200</td></tr>
+      <tr><td>PPP→悉尼</td><td>Jetstar JQ841</td><td>10/3 13:50→16:30</td><td style="text-align:center">A$130-200</td></tr>
+      <tr><td>悉尼→杭州</td><td>MF802 (已购)</td><td>10/4 12:25</td><td style="text-align:center;color:var(--forest);">已购</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">💡 Jetstar SYD-PPP是唯一的直飞选择，提前1-2月订，A$130-200是正常价。</div>
+</section>
+
+<!-- ═══════════════ 潜水对比 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">🤿 体验潜水 vs 浮潜对照表</h2>
+  <table class="diving-table">
+    <thead><tr><th></th><th>Hardy Reef 浮潜</th><th>Hardy Reef 体验潜水</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:600;">价格</td><td>免费（含在日游里）</td><td class="highlight">A$150-180/次</td></tr>
+      <tr><td style="font-weight:600;">深度</td><td>水面0-5m</td><td class="highlight">5-12m</td></tr>
+      <tr><td style="font-weight:600;">需要证照</td><td>❌ 不需要</td><td class="highlight">❌ 不需要！教练1对1带</td></tr>
+      <tr><td style="font-weight:600;">能看到什么</td><td>珊瑚顶+浅水鱼+海龟</td><td class="highlight">珊瑚墙+大鱼群+礁鲨+海鳗</td></tr>
+      <tr><td style="font-weight:600;">体验感受</td><td>★★★</td><td class="highlight">★★★★★</td></tr>
+      <tr><td style="font-weight:600;">适合谁</td><td>不想深潜的队员</td><td class="highlight">想体验水下呼吸的队员！</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">💡 6人都没有潜水证，建议全员报 <strong>Discover Scuba Diving</strong>。教练一对一，在浮台旁浅水区先适应呼吸再去看珊瑚墙。不同队员可根据舒适度选择深潜或浮潜，团队不强制统一。</div>
+</section>
+
+<!-- ═══════════════ 预算 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">💰 预算明细（每人，AUD · 6人团）</h2>
+  <table class="budget-table">
+    <thead><tr><th>类别</th><th>项目</th><th style="text-align:center">人均预估</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>🏨 住宿</td><td>悉尼额外住宿 4晚</td><td class="amount">200-300</td><td>Meriton 2BR分摊</td></tr>
+      <tr><td></td><td>Airlie Beach 3BR公寓 4晚</td><td class="amount">200-300</td><td>The Boathouse ÷ 6人</td></tr>
+      <tr><td>✈️ 国内机票</td><td>SYD-PPP + PPP-SYD</td><td class="amount">260-400</td><td>早点订</td></tr>
+      <tr><td>🚗 猎人谷租车</td><td>7座MPV 1天</td><td class="amount">25-35</td><td>A$150-200/天 ÷ 6人</td></tr>
+      <tr><td>🐋 观鲸</td><td>2-3小时观鲸船</td><td class="amount">69-99</td><td>9月底尾峰</td></tr>
+      <tr><td>🍷 猎人谷品酒</td><td>大部分免费</td><td class="amount">0-30</td><td>买酒可抵品酒费</td></tr>
+      <tr><td>🎫 景点</td><td>Icebergs Pool (Bondi)</td><td class="amount">10</td><td></td></tr>
+      <tr><td>🏖️ Day Trip</td><td>Ocean Rafting (白天堂)</td><td class="amount">199-249</td><td></td></tr>
+      <tr><td>🤿 Day Trip</td><td>Cruise Whitsundays (外礁)</td><td class="amount">319</td><td></td></tr>
+      <tr><td></td><td>+ 体验潜水 (1次)</td><td class="amount">150-180</td><td></td></tr>
+      <tr><td>🛩️</td><td>心形礁观光飞机</td><td class="amount">315-349</td><td>13座飞机，务必早订</td></tr>
+      <tr><td>🚌 交通</td><td>PPP机场接驳×2</td><td class="amount">30-40</td><td>6人包车更划算</td></tr>
+      <tr><td></td><td>悉尼Opal</td><td class="amount">40-60</td><td></td></tr>
+      <tr><td>🍽️ 餐饮</td><td>9天</td><td class="amount">500-750</td><td></td></tr>
+      <tr class="total-row"><td colspan="2"><strong>合计</strong></td><td class="amount">约 A$2,340-3,100</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="tip">💡 6人团摊薄了租车和住宿成本。Jetstar 机票和观光飞机要尽早订——6个同航班座位和半架飞机的位子不会等人。</div>
+</section>
+
+<!-- ═══════════════ 预订清单 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">⚠️ 现在就该预订的清单</h2>
+
+  <div class="checklist-section">
+    <h3><span class="tag tag-red">🔴 立刻</span></h3>
+    <ul class="checklist">
+      <li><span class="tag tag-red">急</span> ✈️ Jetstar SYD↔PPP往返机票 ×6人（9/29出发，10/3返回）</li>
+      <li><span class="tag tag-red">急</span> 🏨 悉尼额外住宿：Meriton Suites Waterloo 2BR（补充现有公寓）</li>
+      <li><span class="tag tag-red">急</span> 🏨 Airlie Beach 3BR公寓 4晚（首推The Boathouse或The Sebel）</li>
+      <li><span class="tag tag-red">急</span> 🛥️ Cruise Whitsundays 外礁全日游 ×6人（Day 6，提前2-3周）</li>
+      <li><span class="tag tag-red">急</span> 🛩️ 心形礁观光飞机 ×6人（Day 7早上，13座飞机占半架！）</li>
+      <li><span class="tag tag-red">急</span> 🏖️ Ocean Rafting 白天堂海滩游 ×6人（Day 5，提前2周）</li>
+    </ul>
+
+    <h3><span class="tag tag-yellow">🟡 出发前2周</span></h3>
+    <ul class="checklist">
+      <li>🚗 猎人谷租车：7座MPV（Kia Carnival或同级），VroomVroomVroom比价；或报跟团一日游A$130-190/人</li>
+      <li>🐋 观鲸船票 ×6人（Day 3早上，Go Whale Watching Sydney / Captain Cook）</li>
+      <li>🧊 Icebergs Pool Bondi（不用预约，到场买票即可）</li>
+      <li>🚌 PPP机场接送：6人建议包车/私人接驳</li>
+      <li>🤿 买潜水保险 ×6人（DAN或PADI，体验潜水也建议保）</li>
+      <li>📱 下载离线地图：猎人谷 / Airlie Beach / Whitsunday Islands</li>
+      <li>🍽️ 热门餐厅提前订位：Mr Wong's、Opera Bar、Coogee Pavilion 等（6人桌紧张）</li>
+    </ul>
+
+    <h3><span class="tag tag-green">🟢 出行当天</span></h3>
+    <ul class="checklist">
+      <li>浮潜面镜+呼吸管（如自备更合脸型，船上也提供）</li>
+      <li>高倍数防水防晒霜（注意珊瑚友好reef-safe）</li>
+      <li>防水手机套</li>
+      <li>晕船药（去外礁2小时船程）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ 自然守则 ═══════════════ -->
+<section class="section">
+  <h2 class="section-title">🌿 国家公园与自然守则</h2>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <h4>🐨 考拉</h4>
+      <p class="do">✅ 轻轻抚摸背部（Featherdale）</p>
+      <p class="dont">❌ 不能抱！NSW州法律禁止</p>
+    </div>
+    <div class="rule-card">
+      <h4>🦘 袋鼠</h4>
+      <p class="do">✅ 喂食专用饲料、轻轻抚摸</p>
+      <p class="dont">❌ 不要摸头/脸部、不要追</p>
+    </div>
+    <div class="rule-card">
+      <h4>🐋 鲸鱼</h4>
+      <p class="do">✅ 从船上远观（保持100m距离）</p>
+      <p class="dont">❌ 不能靠近/触碰</p>
+    </div>
+    <div class="rule-card">
+      <h4>🐢 海龟</h4>
+      <p class="do">✅ 保持3m距离浮潜观看</p>
+      <p class="dont">❌ 不能触碰/追逐/挡住上浮</p>
+    </div>
+    <div class="rule-card">
+      <h4>🐠 珊瑚</h4>
+      <p class="do">✅ 浮潜时观看</p>
+      <p class="dont">❌ 不能踩/碰/折断</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Footer ═══════════════ -->
+<footer style="text-align:center;padding:40px 0 20px;color:var(--text-light);font-size:.85em;border-top:1px solid var(--border);margin-top:40px;">
+  <p>本行程基于2025-2026年最新信息整理，价格以实际预订为准。</p>
+  <p>祝旅途愉快！🐨🦘🐋🤿🏖️</p>
+</footer>
+
+</div><!-- /container -->
+
+</body>
+</html>
